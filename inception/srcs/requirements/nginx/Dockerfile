@@ -1,0 +1,15 @@
+FROM debian:bullseye
+#nginx container
+RUN ["apt", "update"]
+RUN ["apt", "upgrade"]
+RUN ["apt", "install", "-y", "vim"]
+RUN ["apt", "install", "-y", "nginx"]
+RUN ["apt", "install", "-y", "openssl"]
+RUN ["mkdir", "-p", "/etc/ssl"]
+RUN ["openssl", "req", "-x509", "-nodes", "-out", "/etc/ssl/ssl.crt", "-keyout", "/etc/ssl/ssl.key", "-subj", "/C=AT/ST=vienna/L=vienna/O=42/OU=student/CN=cthaler.42.fr/EA=cthaler@42.fr"]
+RUN ["mkdir", "-p", "/var/run/nginx"]
+COPY ["./conf/nginx.conf", "/etc/nginx/nginx.conf"]
+COPY ["./conf/default", "/etc/nginx/sites-enabled/default"]
+RUN ["chmod", "755", "/var/www/html"]
+RUN ["chown", "-R", "www-data:www-data", "/var/www/html"]
+CMD ["nginx", "-g", "daemon off;"]
