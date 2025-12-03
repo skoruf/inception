@@ -1,0 +1,28 @@
+# Environment variables - NEVER commit passwords!
+srcs/.env
+.env
+*.env
+
+# Secrets directory (if it exists)
+secrets/
+srcs/secrets/
+
+# Docker volumes data (if accidentally created in repo)
+data/
+srcs/data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.log
+

@@ -1,7 +1,7 @@
 FROM debian:bullseye
 #nginx container
 RUN ["apt", "update"]
-RUN ["apt", "upgrade"]
+RUN ["apt", "upgrade", "-y"]
 RUN ["apt", "install", "-y", "vim"]
 RUN ["apt", "install", "-y", "nginx"]
 RUN ["apt", "install", "-y", "openssl"]
