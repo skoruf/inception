@@ -12,7 +12,7 @@ services:
       - "443:443"
     volumes:
       - wordpress:/var/www/wordpress
-    env_file: .env
+    env_file: /home/cthaler/.env
     restart: on-failure
   mariadb:
     build: ./requirements/mariadb/.
@@ -20,7 +20,7 @@ services:
     container_name: mariadb
     networks:
       - inception
-    env_file: .env
+    env_file: /home/cthaler/.env
     volumes:
       - mariadb:/var/lib/mysql
     restart: unless-stopped
@@ -32,7 +32,7 @@ services:
     container_name: wordpress
     networks:
       - inception
-    env_file: .env
+    env_file: /home/cthaler/.env
     volumes:
       - wordpress:/var/www/wordpress
     depends_on:
@@ -46,13 +46,11 @@ volumes:
       type: 'none'
       o: 'bind'
       device: '/home/cthaler/data/mariadb'
-      #device: '/Users/cthaler/volumes/mariadb'
   wordpress:
     driver_opts:
       type: 'none'
       o: 'bind'
       device: '/home/cthaler/data/wordpress'
-      #device: '/Users/cthaler/volumes/wordpress'
 networks:
   inception:
     driver: bridge
