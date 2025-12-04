@@ -16,18 +16,18 @@ sudo chown -R $USER:$USER /home/cthaler/data
 
 ## Step 2: Create `.env` File
 
-Create `srcs/.env` with your passwords:
+Docker Compose now loads environment variables from `/home/cthaler/.env` (so it also works outside the repo). Create the file on your VM:
 
 ```bash
-cd /Users/marianfurnica/Desktop/inception/inception/srcs
-cat > .env << 'EOF'
+sudo mkdir -p /home/cthaler
+cat << 'EOF' | sudo tee /home/cthaler/.env > /dev/null
 DOMAIN_NAME=cthaler.42.fr
 SQL_DB=wordpress_db
 SQL_USER=wordpress_user
 SQL_PW=YourSecurePassword123!
 SQL_ROOT_PW=YourRootPassword123!
 EOF
-chmod 600 .env
+sudo chmod 600 /home/cthaler/.env
 ```
 
 **⚠️ IMPORTANT:** Never commit `.env` to git! It contains passwords.

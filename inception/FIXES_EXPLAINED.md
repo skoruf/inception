@@ -317,7 +317,7 @@ location ~ \.php$ {
 
 ### Required `.env` File
 
-You **must** create a file `srcs/.env` with the following variables:
+You **must** create a file `/home/cthaler/.env` with the following variables (Docker Compose references this absolute path):
 
 ```bash
 # Domain name (must match your login)
@@ -451,7 +451,7 @@ docker exec -it mariadb mysql -u wordpress_user -p
 1. ✅ `srcs/requirements/wordpress/conf/www.conf` - php-fpm pool configuration
 
 ### Files You Must Create:
-1. ⚠️ `srcs/.env` - Environment variables (see section 6)
+1. ⚠️ `/home/cthaler/.env` - Environment variables (see section 6)
 
 ---
 
